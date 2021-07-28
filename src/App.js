@@ -18,6 +18,11 @@ function App() {
       setUsers([...myuser, newUser]);
     };
 
+    const editUsers = (newUser) => {
+      const data = myuser.filter((user) => user.id !== newUser.id);
+      setUsers([...data, newUser]);
+    };
+
     const deleteCallback = (id) => {
         const data = myuser.filter((user) => user.id !== id);
         setUsers(data);
