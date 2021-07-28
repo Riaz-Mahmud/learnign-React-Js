@@ -14,6 +14,10 @@ function App() {
 
     const [myuser, setUsers] = useState(users);
 
+    const addUsers = (newUser) => {
+      setUsers([...myuser, newUser]);
+    };
+
     const deleteCallback = (id) => {
         const data = myuser.filter((user) => user.id !== id);
         setUsers(data);
@@ -32,8 +36,8 @@ function App() {
             <UserList list={myuser} callback={deleteCallback}/>
           </div>
         </Route>
-        <Route path='/Create'>
-            <AddUser status='add'/>
+        <Route path="/Create">
+          <AddUser status="add" callback={addUsers} />
         </Route>
         <Route path='/edit/:id' children={<AddUser status='edit'/>}></Route>
         <Route path='*'>
